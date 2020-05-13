@@ -15,15 +15,14 @@ import (
 func twoSum(nums []int, target int) []int {
 	// key:   target-nums[i]
 	// value: index of nums
-	m := make(map[int]int)
+	sumTracker := make(map[int]int)
 	for i := 0; i < len(nums); i++ {
-		if val, ok := m[nums[i]]; ok {
-			return []int{val, i}
-		} else {
-			m[target-nums[i]] = i
+		if oldIndex, keyExist := sumTracker[nums[i]]; keyExist {
+			return []int{oldIndex, i}
 		}
+		sumTracker[target-nums[i]] = i
 	}
-	return []int{-1}
+	return nil
 }
 
 func TestTwoSum(t *testing.T) {
