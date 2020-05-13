@@ -13,9 +13,15 @@ import (
 )
 
 func twoSum(nums []int, target int) []int {
-	//m := make(map[int]int)
+	// key:   target-nums[i]
+	// value: index of nums
+	m := make(map[int]int)
 	for i := 0; i < len(nums); i++ {
-
+		if val, ok := m[nums[i]]; ok {
+			return []int{val, i}
+		} else {
+			m[target-nums[i]] = i
+		}
 	}
 	return []int{-1}
 }
