@@ -39,6 +39,7 @@ func TestHelperMethods(t *testing.T) {
 	}
 }
 
+// 12ms
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	dummyHead := new(ListNode)
 	current := dummyHead
@@ -74,6 +75,33 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 		current.Next = new(ListNode)
 		current = current.Next
 		current.Val = sumOrCarry
+	}
+	return dummyHead.Next
+}
+
+// 最佳答案，0ms的解答
+/* 阅读收获
+	1. *ListNode指针类型不是一定要new(ListNode)的语句来初始化，可用listNode.Next = &ListNode{0,nil}来赋值
+*/
+func bestAnswer(l1 *ListNode, l2 *ListNode) *ListNode {
+	dummyHead := &ListNode{
+		Val:  0,
+		Next: nil,
+	}
+	current := dummyHead
+	sumOrCarry := 0
+	for l1 != nil || l2 != nil || sumOrCarry != 0 {
+		if l1 != nil {
+			sumOrCarry += l1.Val
+			l1 = l1.Next
+		}
+		if l2 != nil {
+			sumOrCarry += l2.Val
+			l2 = l2.Next
+		}
+		current.Next = &ListNode{Val: sumOrCarry % 10, Next: nil}
+		current = current.Next
+		sumOrCarry /= 10
 	}
 	return dummyHead.Next
 }
