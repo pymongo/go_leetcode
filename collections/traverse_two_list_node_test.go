@@ -15,9 +15,8 @@ func sliceToListNode(numbers []int) *ListNode {
 	dummyHead := new(ListNode)
 	current := dummyHead
 	for i := 0; i < len(numbers); i++ {
-		current.Next = new(ListNode)
+		current.Next = &ListNode{numbers[i], nil}
 		current = current.Next
-		current.Val = numbers[i]
 	}
 	return dummyHead.Next
 }
@@ -46,24 +45,21 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	sumOrCarry := 0
 	for {
 		if l1 != nil && l2 != nil {
-			current.Next = new(ListNode)
-			current = current.Next
 			sumOrCarry = sumOrCarry + l1.Val + l2.Val
-			current.Val = sumOrCarry % 10
+			current.Next = &ListNode{sumOrCarry % 10, nil}
+			current = current.Next
 			sumOrCarry /= 10
 			l1, l2 = l1.Next, l2.Next
 		} else if l1 != nil && l2 == nil {
-			current.Next = new(ListNode)
-			current = current.Next
 			sumOrCarry = sumOrCarry + l1.Val
-			current.Val = sumOrCarry % 10
+			current.Next = &ListNode{sumOrCarry % 10, nil}
+			current = current.Next
 			sumOrCarry /= 10
 			l1 = l1.Next
 		} else if l1 == nil && l2 != nil {
-			current.Next = new(ListNode)
-			current = current.Next
 			sumOrCarry = sumOrCarry + l2.Val
-			current.Val = sumOrCarry % 10
+			current.Next = &ListNode{sumOrCarry % 10, nil}
+			current = current.Next
 			sumOrCarry /= 10
 			l2 = l2.Next
 		} else {
@@ -72,9 +68,7 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	}
 	// 如果还有进位，应对testCase: [5],[5] => [0, 1]
 	if sumOrCarry > 0 {
-		current.Next = new(ListNode)
-		current = current.Next
-		current.Val = sumOrCarry
+		current.Next = &ListNode{sumOrCarry, nil}
 	}
 	return dummyHead.Next
 }
