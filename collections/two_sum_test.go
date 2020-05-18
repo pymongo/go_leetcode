@@ -1,7 +1,8 @@
 /*
 https://leetcode.com/problems/two-sum/
 本题主要是掌握使用(B)Tree Map的数据结构达到O(n)的时间复杂度
-不演示暴力遍历求解的方法
+bitwise_补码的解法收录在java_leetcode中
+不记录暴力遍历求解的方法
 */
 
 package collections
