@@ -1,7 +1,7 @@
 package collections
 
 import (
-	"fmt"
+	"reflect"
 	"testing"
 )
 
@@ -23,18 +23,18 @@ func sliceToListNode(numbers []int) *ListNode {
 }
 
 // 仅用于单元测试中验证返回值的Helper方法
-//func listNodeToArray(numbers []int) {
-//	result := twoSum([]int{2, 7, 11, 5}, 9)
-//	fmt.Println(result)
-//	if !reflect.DeepEqual(result, []int{0, 1}) {
-//		t.Errorf("Wrong Answer")
-//	}
-//}
+func listNodeToSlice(listNode *ListNode) []int {
+	var numbers []int
+	for listNode != nil {
+		numbers = append(numbers, listNode.Val)
+		listNode = listNode.Next
+	}
+	return numbers
+}
 
 func TestHelperMethods(t *testing.T) {
-	result := sliceToListNode([]int{2, 7, 11, 5})
-	fmt.Println(result)
-	if false {
+	result := sliceToListNode([]int{1, 2, 3})
+	if !reflect.DeepEqual(listNodeToSlice(result), []int{1, 2, 3}) {
 		t.Errorf("Wrong Answer")
 	}
 }
