@@ -15,9 +15,10 @@ type TestCase struct {
 }
 
 var testCases = []TestCase{
-	//{Nums1: []int{1, 2, 3, 0, 0, 0}, M: 3, Nums2: []int{2, 5, 6}, N: 3, Result: []int{1, 2, 2, 3, 5, 6}},
-	//{[]int{1}, 1, []int{}, 0, []int{1}},
+	{Nums1: []int{1, 2, 3, 0, 0, 0}, M: 3, Nums2: []int{2, 5, 6}, N: 3, Result: []int{1, 2, 2, 3, 5, 6}},
+	{[]int{1}, 1, []int{}, 0, []int{1}},
 	{[]int{0}, 0, []int{1}, 1, []int{1}},
+	{[]int{2.0}, 1, []int{1}, 1, []int{1,2}},
 }
 
 /*
@@ -39,8 +40,8 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 	}
 	nums1ReadIdx := m - 1
 	nums2ReadIdx := n - 1
-	nums1WriteIdx := len(nums1) - 1
-	for nums1ReadIdx >= 0 {
+	nums1WriteIdx := m + n - 1
+	for nums1ReadIdx >= 0 && nums2ReadIdx >= 0 {
 		if nums1[nums1ReadIdx] > nums2[nums2ReadIdx] {
 			nums1[nums1WriteIdx] = nums1[nums1ReadIdx]
 			nums1ReadIdx--
@@ -54,6 +55,7 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 			nums1WriteIdx--
 		}
 	}
+	// TODO add missing elements from nums2
 }
 
 func TestMerge(t *testing.T) {
