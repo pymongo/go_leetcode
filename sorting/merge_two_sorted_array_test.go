@@ -15,12 +15,26 @@ type TestCase struct {
 }
 
 var testCases = []TestCase{
-	{Nums1: []int{1, 2, 3, 0, 0, 0}, M: 3, Nums2: []int{2, 5, 6}, N: 3, Result: []int{1, 2, 2, 3, 5, 6}},
-	{[]int{1}, 1, []int{}, 0, []int{1}},
+	//{Nums1: []int{1, 2, 3, 0, 0, 0}, M: 3, Nums2: []int{2, 5, 6}, N: 3, Result: []int{1, 2, 2, 3, 5, 6}},
+	//{[]int{1}, 1, []int{}, 0, []int{1}},
+	{[]int{0}, 0, []int{1}, 1, []int{1}},
 }
 
+/*
+Input:    [2,0] 1 [1] 1
+Output:   [2,2]
+Expected: [1,2]
+*/
 func merge(nums1 []int, m int, nums2 []int, n int) {
+	// Input: [1], 1, [ ], 0
 	if len(nums2) == 0 {
+		return
+	}
+	// Input: [0], 0, [1], 1
+	if m == 0 {
+		for i:=0; i< len(nums2); i++ {
+			nums1[i] = nums2[i]
+		}
 		return
 	}
 	nums1ReadIdx := m - 1
