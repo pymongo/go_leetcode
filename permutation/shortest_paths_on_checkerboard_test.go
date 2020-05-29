@@ -15,6 +15,7 @@ func UniquePaths(m int, n int) int {
 	sum := max+min
 	for i:=0; i<min; i++ {
 		result *= sum-i
+		// 先乘后除，避免result溢出
 		result /= i+1
 	}
 	return result
