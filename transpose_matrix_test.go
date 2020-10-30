@@ -1,6 +1,6 @@
-package easy
+package go_leetcode
 
-func transpose(A [][]int) [][]int {
+func transpose_solution_1(A [][]int) [][]int {
 	m, n := len(A), len(A[0])
 	res := make([][]int, 0, n)
 	for j := 0; j < n; j++ {
@@ -13,7 +13,7 @@ func transpose(A [][]int) [][]int {
 	return res
 }
 
-func transpose2(A [][]int) [][]int {
+func transpose_solution_2(A [][]int) [][]int {
 	m, n := len(A), len(A[0])
 	res := make([][]int, len(A[0]))
 	for i := range res {

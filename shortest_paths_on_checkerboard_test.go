@@ -1,4 +1,4 @@
-package permutation
+package go_leetcode
 
 import (
 	"fmt"

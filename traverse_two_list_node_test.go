@@ -1,4 +1,4 @@
-package collections
+package go_leetcode
 
 import (
 	"reflect"

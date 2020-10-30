@@ -1,4 +1,4 @@
-package sorting
+package go_leetcode
 
 import (
 	"fmt"

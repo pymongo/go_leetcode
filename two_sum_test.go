@@ -5,7 +5,7 @@ bitwise_补码的解法收录在java_leetcode中
 不记录暴力遍历求解的方法
 */
 
-package collections
+package go_leetcode
 
 import (
 	"fmt"
@@ -28,6 +28,7 @@ func twoSum(nums []int, target int) []int {
 
 func TestTwoSum(t *testing.T) {
 	result := twoSum([]int{2, 7, 11, 5}, 9)
+	t.Log(result)
 	fmt.Println(result)
 	if !reflect.DeepEqual(result, []int{0, 1}) {
 		t.Errorf("Wrong Answer")
